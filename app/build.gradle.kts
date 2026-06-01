@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
 
     implementation(libs.androidx.navigation.compose)
 
@@ -77,6 +78,8 @@ dependencies {
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+
+    implementation(libs.timber)
 
     testImplementation(libs.junit)
 
