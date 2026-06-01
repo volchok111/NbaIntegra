@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 abstract class AbstractViewModel<S : AbstractViewModel.State>(
     initialState: S,
@@ -17,6 +18,6 @@ abstract class AbstractViewModel<S : AbstractViewModel.State>(
     protected var state: S
         get() = mutableStates.value
         set(value) {
-            mutableStates.value = value
+            mutableStates.update { value }
         }
 }

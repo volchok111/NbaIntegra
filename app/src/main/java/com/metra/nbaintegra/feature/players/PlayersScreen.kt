@@ -134,7 +134,7 @@ private fun ListItem(
                     fontWeight = FontWeight.Bold,
                 )
                 NbaText(
-                    text = "${stringResource(id = R.string.home_screen_team)} ${player.team}",
+                    text = "${stringResource(id = R.string.home_screen_team)} ${player.team.fullName}",
                     style = MaterialTheme.typography.bodyMedium,
                     color = chrome400,
                 )

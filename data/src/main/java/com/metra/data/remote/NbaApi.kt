@@ -1,8 +1,8 @@
 package com.metra.data.remote
 
-import com.metra.data.remote.entity.PlayerEntity
+import com.metra.data.remote.entity.PlayerDetailsResponseEntity
 import com.metra.data.remote.entity.PlayerResponseEntity
-import com.metra.data.remote.entity.TeamEntity
+import com.metra.data.remote.entity.TeamDetailsResponseEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,10 +17,10 @@ interface NbaApi {
     @GET("players/{id}")
     suspend fun getPlayerDetails(
         @Path(value = "id") id: Int,
-    ): PlayerEntity
+    ): PlayerDetailsResponseEntity
 
     @GET("teams/{id}")
     suspend fun getTeamDetails(
         @Path(value = "id") id: Int,
-    ): TeamEntity
+    ): TeamDetailsResponseEntity
 }

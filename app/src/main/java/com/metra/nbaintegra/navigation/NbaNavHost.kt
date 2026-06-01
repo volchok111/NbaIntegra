@@ -8,6 +8,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import com.metra.nbaintegra.feature.playerdetails.PlayerDetailsScreen
 import com.metra.nbaintegra.feature.players.PlayerScreen
 
 @Composable
@@ -39,19 +40,19 @@ fun NbaNavHost(modifier: Modifier = Modifier) {
                     )
                 }
 
-//            entry<PlayerDetailRoute> { route ->
-//                PlayerDetailScreen(
-//                    playerId = route.playerId,
-//                    onBackClick = {
-//                        backStack.removeLastOrNull()
-//                    },
-//                    onTeamClick = { teamId ->
+                entry<PlayerDetailRoute> { route ->
+                    PlayerDetailsScreen(
+                        playerId = route.playerId,
+                        onBackClick = {
+                            backStack.removeLastOrNull()
+                        },
+                        onTeamClick = { teamId ->
 //                        backStack.add(
 //                            TeamDetailRoute(teamId = teamId)
 //                        )
-//                    }
-//                )
-//            }
+                        },
+                    )
+                }
 
 //            entry<TeamDetailRoute> { route ->
 //                TeamDetailScreen(

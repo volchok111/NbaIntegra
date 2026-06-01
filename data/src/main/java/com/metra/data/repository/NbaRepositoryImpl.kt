@@ -3,9 +3,11 @@ package com.metra.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.metra.data.mappers.toModel
+import com.metra.data.mappers.toDetailsModel
+import com.metra.data.mappers.toTeamModel
 import com.metra.data.paging.PlayerPagingSource
 import com.metra.data.remote.NbaApi
+import com.metra.domain.model.PlayerDetailsModel
 import com.metra.domain.model.PlayerModel
 import com.metra.domain.model.TeamModel
 import com.metra.domain.repository.NbaRepository
@@ -29,19 +31,19 @@ class NbaRepositoryImpl(
             },
         ).flow
 
-    override suspend fun getPlayerDetails(id: Int): Data<PlayerModel> =
+    override suspend fun getPlayerDetails(id: Int): Data<PlayerDetailsModel> =
         try {
-            val result = nbaApi.getPlayerDetails(id).toModel()
+            val result = nbaApi.getPlayerDetails(id).data.toDetailsModel()
             Data.Success(result)
-        } catch (ex: Exception) {
-            Data.Error(ex)
+        } catch (e: Exception) {
+            Data.Error(e)
         }
 
     override suspend fun getTeamDetails(id: Int): Data<TeamModel> =
         try {
-            val result = nbaApi.getTeamDetails(id).toModel()
+            val result = nbaApi.getTeamDetails(id).data.toTeamModel()
             Data.Success(result)
-        } catch (ex: Exception) {
-            Data.Error(ex)
+        } catch (e: Exception) {
+            Data.Error(e)
         }
 }
