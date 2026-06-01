@@ -28,9 +28,7 @@ subprojects {
     pluginManager.withPlugin("com.android.application") {
         extensions.configure<ApplicationExtension>("android") {
             compileSdk {
-                version = release(36) {
-                    minorApiLevel = 1
-                }
+                version = release(37)
             }
 
             defaultConfig {
@@ -50,9 +48,7 @@ subprojects {
     pluginManager.withPlugin("com.android.library") {
         extensions.configure<LibraryExtension>("android") {
             compileSdk {
-                version = release(36) {
-                    minorApiLevel = 1
-                }
+                version = release(37)
             }
 
             defaultConfig {

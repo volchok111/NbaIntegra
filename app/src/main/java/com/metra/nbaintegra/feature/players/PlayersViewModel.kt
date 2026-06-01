@@ -17,4 +17,6 @@ class PlayersViewModel(
     data class State(
         val loading: Boolean = true,
     ) : AbstractViewModel.State
+
+    // TODO: Fix bug when run app for the > second time data are not visible
 }
