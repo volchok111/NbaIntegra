@@ -1,4 +1,4 @@
-package com.metra.nbaintegra.ui.theme
+package com.metra.nbaintegra.core.theme
 
 import androidx.compose.ui.graphics.Color
 

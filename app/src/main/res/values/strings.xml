@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">nbaIntegra</string>
+    <string name="app_name">NbaPlayers</string>
+
+    <!-- MARK: - Home Screen -->
+    <string name="home_screen_title">Players</string>
+    <string name="home_screen_team">Team:</string>
+    <string name="home_screen_top_bar_title">NBA Players</string>
+
+    <!-- MARK: - Details Screen -->
+    <string name="details_screen_name">Name</string>
+    <string name="details_screen_position">Position</string>
+    <string name="details_screen_team">Team</string>
+    <string name="details_screen_top_bar_title">Player Info</string>
+
+    <!-- MARK: - Team Screen -->
+    <string name="team_screen_abbreviation">Abbreviation:</string>
+    <string name="team_screen_city">City:</string>
+    <string name="team_screen_conference">Conference:</string>
+    <string name="team_screen_division">Division:</string>
+    <string name="team_screen_name">Name:</string>
+
+    <!-- MARK: - Dialog messages -->
+    <string name="dialog_button_ok">OK</string>
+    <string name="no_internet_connection">No internet connection</string>
 </resources>

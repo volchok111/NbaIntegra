@@ -15,7 +15,7 @@ fun PlayerEntity.toModel(): PlayerModel =
         team = team.toModel(),
     )
 
-private fun TeamEntity.toModel(): TeamModel =
+fun TeamEntity.toModel(): TeamModel =
     TeamModel(
         id = id,
         conference = conference,
