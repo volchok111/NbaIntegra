@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.metra.nbaintegra.core.theme.NbaIntegraTheme
-import com.metra.nbaintegra.feature.players.PlayerScreen
+import com.metra.nbaintegra.navigation.NbaNavHost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NbaIntegraTheme {
-                PlayerScreen()
+                NbaNavHost()
             }
         }
     }
