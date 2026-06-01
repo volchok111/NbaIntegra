@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -27,7 +26,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
@@ -44,18 +42,12 @@ import com.metra.nbaintegra.core.ui.NbaTopBar
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun PlayerScreen() {
-    val viewModel = koinViewModel<PlayersViewModel>()
-    val pagingItems = viewModel.players.collectAsLazyPagingItems()
+fun PlayerScreen(
+    onPlayerClick: (Int) -> Unit,
+    viewModel: PlayersViewModel = koinViewModel(),
+) {
+    val players = viewModel.players.collectAsLazyPagingItems()
 
-    PlayerScreenImpl(
-        pagingData = pagingItems,
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun PlayerScreenImpl(pagingData: LazyPagingItems<PlayerModel>) {
     Scaffold(
         topBar = {
             NbaTopBar(
@@ -75,15 +67,23 @@ private fun PlayerScreenImpl(pagingData: LazyPagingItems<PlayerModel>) {
                     Modifier
                         .padding(sizeS),
             ) {
-                items(pagingData.itemCount) { index ->
-                    ListItem(
-                        modifier =
-                            Modifier
-                                .clickable { },
-                        fullName = pagingData[index]?.fullName.orEmpty(),
-                        teamName = pagingData[index]?.team?.name.orEmpty(),
-                    )
-                    Spacer(modifier = Modifier.height(sizeS))
+                items(
+                    count = players.itemCount,
+                    key = { index -> players[index]?.id ?: index },
+                ) { index ->
+
+                    val player = players[index]
+                    if (player != null) {
+                        ListItem(
+                            modifier =
+                                Modifier
+                                    .clickable {
+                                        onPlayerClick(player.id)
+                                    },
+                            player = player,
+                        )
+                        Spacer(modifier = Modifier.height(sizeS))
+                    }
                 }
             }
         }
@@ -94,8 +94,7 @@ private fun PlayerScreenImpl(pagingData: LazyPagingItems<PlayerModel>) {
 @Composable
 private fun ListItem(
     modifier: Modifier = Modifier,
-    fullName: String,
-    teamName: String,
+    player: PlayerModel,
 ) {
     Card(
         shape = RoundedCornerShape(20.dp),
@@ -129,13 +128,13 @@ private fun ListItem(
                         .padding(start = sizeS),
             ) {
                 NbaText(
-                    text = fullName,
+                    text = player.fullName,
                     style = MaterialTheme.typography.headlineSmall,
                     color = black,
                     fontWeight = FontWeight.Bold,
                 )
                 NbaText(
-                    text = "${stringResource(id = R.string.home_screen_team)} $teamName",
+                    text = "${stringResource(id = R.string.home_screen_team)} ${player.team}",
                     style = MaterialTheme.typography.bodyMedium,
                     color = chrome400,
                 )
