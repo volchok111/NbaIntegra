@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.metra.domain.usecase.ObservePlayersUseCase
 import com.metra.domain.utils.invoke
-import com.metra.nbaintegra.core.utils.AbstractViewModel
+import com.metra.nbaintegra.core.viewmodel.AbstractViewModel
 
 class PlayersViewModel(
     observePlayersUseCase: ObservePlayersUseCase,

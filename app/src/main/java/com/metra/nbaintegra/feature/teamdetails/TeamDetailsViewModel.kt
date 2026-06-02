@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.metra.domain.model.TeamDetailsModel
 import com.metra.domain.usecase.GetTeamDetailsUseCase
 import com.metra.domain.utils.Data
-import com.metra.nbaintegra.core.utils.AbstractViewModel
+import com.metra.nbaintegra.core.viewmodel.AbstractViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

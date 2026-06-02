@@ -1,4 +1,4 @@
-package com.metra.nbaintegra.core.ui
+package com.metra.nbaintegra.core.theme
 
 import androidx.compose.ui.unit.dp
 

@@ -16,8 +16,8 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.metra.nbaintegra.R
-import com.metra.nbaintegra.core.ui.NbaColors
-import com.metra.nbaintegra.core.ui.NbaDimensions
+import com.metra.nbaintegra.core.theme.NbaColors
+import com.metra.nbaintegra.core.theme.NbaDimensions
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
