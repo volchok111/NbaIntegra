@@ -1,4 +1,4 @@
-package com.metra.nbaintegra.core.utils
+package com.metra.nbaintegra.core.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -36,10 +36,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.metra.nbaintegra.R
-import com.metra.nbaintegra.core.ui.NbaColors
-import com.metra.nbaintegra.core.ui.NbaDimensions.sizeS
-import com.metra.nbaintegra.core.ui.NbaDimensions.sizeXS
-import com.metra.nbaintegra.core.ui.NbaDimensions.sizeXXS
+import com.metra.nbaintegra.core.theme.NbaColors
+import com.metra.nbaintegra.core.theme.NbaDimensions.sizeS
+import com.metra.nbaintegra.core.theme.NbaDimensions.sizeXS
+import com.metra.nbaintegra.core.theme.NbaDimensions.sizeXXS
 import com.metra.nbaintegra.core.ui.NbaText
 import com.metra.nbaintegra.core.ui.NbaTopBar
 import org.koin.androidx.compose.koinViewModel
