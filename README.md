@@ -16,7 +16,7 @@ Player and team details are opened from locally saved data instead of making ext
 
 The player list also has a simple cache fallback. If the API is temporarily unavailable or returns a rate limit error, the app tries to show already saved players from local storage.
 
-In simple words:
+The app also checks the internet connection. If there is no connection, the user sees a dialog with an option to open network settings.
 
 1. The app loads a page of players from the API
 2. The loaded players are saved locally
@@ -24,6 +24,16 @@ In simple words:
 4. When the user opens player details, the app takes the player from local storage
 5. When the user opens team details, the app takes team information from locally saved player data
 6. If the API request for the player list fails, the app tries to show saved players from Room
+7. If there is no internet connection, the app shows a dialog and allows the user to open network settings
+
+## Screenshots
+
+<p align="center">
+  <img src="./screenshots/players_screen.png" width="220" />
+  <img src="./screenshots/player_details_screen.png" width="220" />
+  <img src="./screenshots/team_details_screen.png" width="220" />
+  <img src="./screenshots/splash_screen.png" width="220" />
+</p>
 
 ## Tech stack
 
@@ -38,13 +48,14 @@ In simple words:
 * Paging 3
 * Room
 * Glide
+* Lottie
 * ktlint
 
 ## Project structure
 
 The project is split into several modules:
 
-* `app` — UI, navigation, ViewModels, application setup, Room database setup
+* `app` — UI, navigation, ViewModels, application setup, Room database setup, network connection monitoring
 * `domain` — domain models, repository interfaces, use cases
 * `data` — API models, Retrofit API, repository implementations, paging logic, local DAO/entities
 * `di` — Koin modules for dependency injection
@@ -62,6 +73,14 @@ If the app receives an API error, for example because of the API rate limit, it 
 This is a simple offline-first style implementation made for demonstration in a test project. It was added mainly because the balldontlie API has rate limits, and using local data helps reduce repeated API calls.
 
 Important note: in offline mode, the app can only show pages that were already loaded and saved before. New pages will not be loaded while the API is unavailable.
+
+## Internet connection handling
+
+The app observes the current network state.
+
+If the device has no internet connection, the app shows a simple dialog. From this dialog, the user can open network settings and enable Wi-Fi or mobile data.
+
+Saved data may still be available without internet, but new pages cannot be loaded until the connection is restored.
 
 ## API key setup
 
@@ -109,4 +128,4 @@ Run auto-format:
 
 This project was created as a test task.
 
-The main focus is on clean project structure, readable code, Jetpack Compose UI, simple navigation, paginated loading, local data saving, and correct API integration.
+The main focus is on clean project structure, readable code, Jetpack Compose UI, simple navigation, paginated loading, local data saving, basic offline behavior, internet connection handling, and correct API integration.
