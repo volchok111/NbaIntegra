@@ -5,12 +5,12 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.metra.data.local.dao.PlayerDao
 import com.metra.data.mappers.toDetailsModel
-import com.metra.data.mappers.toTeamModel
+import com.metra.data.mappers.toLocalTeamModel
 import com.metra.data.paging.PlayerPagingSource
 import com.metra.data.remote.NbaApi
 import com.metra.domain.model.PlayerDetailsModel
 import com.metra.domain.model.PlayerModel
-import com.metra.domain.model.TeamModel
+import com.metra.domain.model.TeamDetailsModel
 import com.metra.domain.repository.NbaRepository
 import com.metra.domain.utils.Data
 import kotlinx.coroutines.flow.Flow
@@ -51,15 +51,17 @@ class NbaRepositoryImpl(
             Data.Error(exception)
         }
 
-    override suspend fun getTeamDetails(id: Int): Data<TeamModel> =
+    override suspend fun getTeamDetails(id: Int): Data<TeamDetailsModel> =
         try {
-            val result =
-                nbaApi
-                    .getTeamDetails(id)
-                    .data
-                    .toTeamModel()
+            val player = playerDao.getPlayerByTeamId(id)
 
-            Data.Success(result)
+            if (player == null) {
+                Data.Error(
+                    IllegalStateException("Team with id=$id was not found in local database"),
+                )
+            } else {
+                Data.Success(player.team.toLocalTeamModel())
+            }
         } catch (exception: Exception) {
             Data.Error(exception)
         }

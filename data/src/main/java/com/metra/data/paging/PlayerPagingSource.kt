@@ -3,8 +3,8 @@ package com.metra.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.metra.data.local.dao.PlayerDao
-import com.metra.data.mappers.toLocalEntity
-import com.metra.data.mappers.toModel
+import com.metra.data.mappers.toLocalPlayerEntity
+import com.metra.data.mappers.toPlayerModel
 import com.metra.data.remote.NbaApi
 import com.metra.domain.model.PlayerModel
 
@@ -21,11 +21,11 @@ class PlayerPagingSource(
                 )
 
             playerDao.upsertPlayers(
-                response.data.map { it.toLocalEntity() },
+                response.data.map { it.toLocalPlayerEntity() },
             )
 
             LoadResult.Page(
-                data = response.data.map { it.toModel() },
+                data = response.data.map { it.toPlayerModel() },
                 prevKey = null,
                 nextKey = response.meta.nextCursor,
             )

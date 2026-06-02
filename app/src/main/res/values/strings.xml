@@ -29,11 +29,17 @@
     <string name="details_screen_draft_number">Draft number</string>
 
     <!-- Team Screen -->
-    <string name="team_screen_abbreviation">Abbreviation:</string>
-    <string name="team_screen_city">City:</string>
-    <string name="team_screen_conference">Conference:</string>
-    <string name="team_screen_division">Division:</string>
-    <string name="team_screen_name">Name:</string>
+    <string name="team_details_title">Team details</string>
+    <string name="team_details_not_available">Team details are not available</string>
+    <string name="team_details_team">Team</string>
+    <string name="team_details_name">Name</string>
+    <string name="team_details_location">Location</string>
+    <string name="team_details_city">City</string>
+    <string name="team_details_full_name">Full name</string>
+    <string name="team_details_abbreviation">Abbreviation</string>
+    <string name="team_details_league_info">League info</string>
+    <string name="team_details_conference">Conference</string>
+    <string name="team_details_division">Division</string>
 
     <!-- Dialog messages -->
     <string name="dialog_button_ok">OK</string>

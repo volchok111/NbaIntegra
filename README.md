@@ -2,9 +2,25 @@
 
 NBA Integra is a small Android app built with Kotlin and Jetpack Compose.
 
-The app shows a list of NBA players with basic information such as first name, last name, position, and team. When the user scrolls to the end of the list, the app loads the next page of players. After selecting a player, the user can open a detail screen with more information. From the player detail screen, it is also possible to open the team detail screen.
+The app shows a list of NBA players with basic information such as first name, last name, position, and team. When the user scrolls to the end of the list, the app loads the next page of players.
+
+After selecting a player, the user can open a player detail screen with more information. From the player detail screen, it is also possible to open the team detail screen.
 
 The data is loaded from the [balldontlie API](https://app.balldontlie.io/).
+
+## What was added
+
+The app now saves loaded players locally using Room.
+
+Player and team details are opened from locally saved data instead of making extra API requests for every detail screen. This helps reduce the number of API calls and avoids unnecessary rate limit errors.
+
+In simple words:
+
+1. The app loads a page of players from the API
+2. The loaded players are saved locally
+3. The list is shown on the screen
+4. When the user opens player details, the app takes the player from local storage
+5. When the user opens team details, the app also takes team information from locally saved player data
 
 ## Tech stack
 
@@ -12,10 +28,12 @@ The data is loaded from the [balldontlie API](https://app.balldontlie.io/).
 * Jetpack Compose
 * MVVM
 * Clean Architecture approach
+* Navigation 3
 * Retrofit
 * OkHttp
 * Koin
 * Paging 3
+* Room
 * Glide
 * ktlint
 
@@ -23,10 +41,20 @@ The data is loaded from the [balldontlie API](https://app.balldontlie.io/).
 
 The project is split into several modules:
 
-* `app` — UI, navigation, ViewModels, application setup
+* `app` — UI, navigation, ViewModels, application setup, Room database setup
 * `domain` — domain models, repository interfaces, use cases
-* `data` — API models, Retrofit API, repository implementations
+* `data` — API models, Retrofit API, repository implementations, paging logic, local DAO/entities
 * `di` — Koin modules for dependency injection
+
+## Data loading
+
+The player list is loaded from the API with pagination. Each page contains 35 players.
+
+The app uses Paging 3, so the next page is loaded when the user scrolls close to the end of the list.
+
+Loaded players are also saved locally. This local data is used for player details and team details.
+
+This is a simple local cache approach. It is not a full offline-first implementation, but it helps keep the app faster and reduces extra API requests.
 
 ## API key setup
 
@@ -42,7 +70,7 @@ To run the app locally:
 BALLDONTLIE_API_KEY=your_api_key_here
 ```
 
-**The real API key is not committed to the repository for security reasons and to demonstrate best practises for test task!!!**
+The real API key is not committed to the repository for security reasons and to demonstrate good practice for a test task.
 
 You can also check `local.properties.example` to see the required property name.
 
@@ -72,4 +100,5 @@ Run auto-format:
 
 ## Notes
 
-This project was created as a test task. The main focus is on clean project structure, readable code, simple navigation, paginated loading, and correct API integration.
+This project was created as a test task.
+The main focus is on clean project structure, readable code, Jetpack Compose UI, simple navigation, paginated loading, local data saving, and correct API integration.

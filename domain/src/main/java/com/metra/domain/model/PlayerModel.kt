@@ -6,5 +6,5 @@ data class PlayerModel(
     val position: String,
     val height: String?,
     val weight: String?,
-    val team: TeamModel,
+    val team: TeamDetailsModel,
 )

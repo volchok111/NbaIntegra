@@ -1,9 +1,7 @@
 package com.metra.data.remote
 
 import com.metra.data.remote.entity.PlayerResponseEntity
-import com.metra.data.remote.entity.TeamDetailsResponseEntity
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NbaApi {
@@ -12,9 +10,4 @@ interface NbaApi {
         @Query("cursor") cursor: Int?,
         @Query("per_page") perPage: Int = 35,
     ): PlayerResponseEntity
-
-    @GET("teams/{id}")
-    suspend fun getTeamDetails(
-        @Path(value = "id") id: Int,
-    ): TeamDetailsResponseEntity
 }
