@@ -10,13 +10,14 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.metra.nbaintegra.feature.playerdetails.PlayerDetailsScreen
 import com.metra.nbaintegra.feature.players.PlayerScreen
+import com.metra.nbaintegra.feature.splash.SplashScreen
 import com.metra.nbaintegra.feature.teamdetails.TeamDetailsScreen
 
 @Composable
 fun NbaNavHost(modifier: Modifier = Modifier) {
     val activity = LocalActivity.current
 
-    val backStack = rememberNavBackStack(PlayerRoute)
+    val backStack = rememberNavBackStack(SplashRoute)
 
     NavDisplay(
         modifier = modifier,
@@ -31,6 +32,15 @@ fun NbaNavHost(modifier: Modifier = Modifier) {
             ),
         entryProvider =
             entryProvider {
+                entry<SplashRoute> {
+                    SplashScreen(
+                        onSplashFinished = {
+                            backStack.clear()
+                            backStack.add(PlayerRoute)
+                        },
+                    )
+                }
+
                 entry<PlayerRoute> {
                     PlayerScreen(
                         onPlayerClick = { playerId ->

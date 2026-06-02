@@ -7,6 +7,9 @@ import kotlinx.serialization.Serializable
 sealed interface NbaRoute : NavKey
 
 @Serializable
+data object SplashRoute : NbaRoute
+
+@Serializable
 data object PlayerRoute : NbaRoute
 
 @Serializable
