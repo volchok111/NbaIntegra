@@ -42,6 +42,8 @@
     <string name="team_details_division">Division</string>
 
     <!-- Dialog messages -->
-    <string name="dialog_button_ok">OK</string>
-    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_internet_title">No internet connection</string>
+    <string name="no_internet_message">You are offline. Saved data may still be available, but new pages cannot be loaded.</string>
+    <string name="no_internet_open_settings">Open settings</string>
+    <string name="common_close">Close</string>
 </resources>
