@@ -16,4 +16,10 @@ interface PlayerDao {
 
     @Query("SELECT * FROM players WHERE team_id = :teamId LIMIT 1")
     suspend fun getPlayerByTeamId(teamId: Int): PlayerLocalEntity?
+
+    @Query("SELECT * FROM players ORDER BY id LIMIT :limit OFFSET :offset")
+    suspend fun getPlayersPage(
+        limit: Int,
+        offset: Int,
+    ): List<PlayerLocalEntity>
 }
