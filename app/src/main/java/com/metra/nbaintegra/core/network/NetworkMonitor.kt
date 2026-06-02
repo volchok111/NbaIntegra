@@ -10,6 +10,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 
+/**
+ * Observes current internet connection state.
+ *
+ * Emits true when the device has a validated internet connection,
+ * and false when the connection is unavailable.
+ */
 class NetworkMonitor(
     context: Context,
 ) {
