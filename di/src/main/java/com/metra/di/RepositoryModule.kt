@@ -9,6 +9,7 @@ val repositoryModule =
         single<NbaRepository> {
             NbaRepositoryImpl(
                 nbaApi = get(),
+                playerDao = get(),
             )
         }
     }
