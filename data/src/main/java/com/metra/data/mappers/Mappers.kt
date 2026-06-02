@@ -47,6 +47,16 @@ fun PlayerEntity.toLocalPlayerEntity(): PlayerLocalEntity =
         team = team.toLocalTeamEntity(),
     )
 
+fun PlayerLocalEntity.toPlayerModel(): PlayerModel =
+    PlayerModel(
+        id = id,
+        fullName = fullName,
+        position = position,
+        height = height,
+        weight = weight,
+        team = team.toLocalTeamModel(),
+    )
+
 fun TeamEntity.toLocalTeamEntity(): TeamLocalEntity =
     TeamLocalEntity(
         id = id,
