@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.ksp)
 }
 
 dependencies {
@@ -11,4 +12,6 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.paging.common)
+    implementation(libs.androidx.room.common)
+    ksp(libs.androidx.room.compiler)
 }

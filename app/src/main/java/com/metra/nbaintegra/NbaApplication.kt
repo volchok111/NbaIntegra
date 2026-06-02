@@ -2,6 +2,7 @@ package com.metra.nbaintegra
 
 import android.app.Application
 import com.metra.di.appModules
+import com.metra.nbaintegra.di.databaseModule
 import com.metra.nbaintegra.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -20,7 +21,7 @@ class NbaApplication : Application() {
         startKoin {
             androidContext(this@NbaApplication)
             modules(
-                appModules + viewModelModule +
+                appModules + viewModelModule + databaseModule +
                     module {
                         single(named("apiKey")) {
                             BuildConfig.BALLDONTLIE_API_KEY
