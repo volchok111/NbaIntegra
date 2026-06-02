@@ -89,6 +89,8 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
+    implementation(libs.android.lottie.compose)
+
     implementation(libs.timber)
 
     testImplementation(libs.junit)
