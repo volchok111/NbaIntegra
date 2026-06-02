@@ -14,5 +14,5 @@ data class PlayerDetailsModel(
     val draftYear: Int?,
     val draftRound: Int?,
     val draftNumber: Int?,
-    val team: TeamModel,
+    val team: TeamDetailsModel,
 )

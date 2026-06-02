@@ -10,6 +10,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.metra.nbaintegra.feature.playerdetails.PlayerDetailsScreen
 import com.metra.nbaintegra.feature.players.PlayerScreen
+import com.metra.nbaintegra.feature.teamdetails.TeamDetailsScreen
 
 @Composable
 fun NbaNavHost(modifier: Modifier = Modifier) {
@@ -34,34 +35,34 @@ fun NbaNavHost(modifier: Modifier = Modifier) {
                     PlayerScreen(
                         onPlayerClick = { playerId ->
                             backStack.add(
-                                PlayerDetailRoute(playerId = playerId),
+                                PlayerDetailsRoute(playerId = playerId),
                             )
                         },
                     )
                 }
 
-                entry<PlayerDetailRoute> { route ->
+                entry<PlayerDetailsRoute> { route ->
                     PlayerDetailsScreen(
                         playerId = route.playerId,
                         onBackClick = {
                             backStack.removeLastOrNull()
                         },
                         onTeamClick = { teamId ->
-//                        backStack.add(
-//                            TeamDetailRoute(teamId = teamId)
-//                        )
+                            backStack.add(
+                                TeamDetailsRoute(teamId = teamId),
+                            )
                         },
                     )
                 }
 
-//            entry<TeamDetailRoute> { route ->
-//                TeamDetailScreen(
-//                    teamId = route.teamId,
-//                    onBackClick = {
-//                        backStack.removeLastOrNull()
-//                    },
-//                )
-//            }
+                entry<TeamDetailsRoute> { route ->
+                    TeamDetailsScreen(
+                        teamId = route.teamId,
+                        onBackClick = {
+                            backStack.removeLastOrNull()
+                        },
+                    )
+                }
             },
     )
 }

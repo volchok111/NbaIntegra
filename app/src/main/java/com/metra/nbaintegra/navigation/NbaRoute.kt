@@ -10,11 +10,11 @@ sealed interface NbaRoute : NavKey
 data object PlayerRoute : NbaRoute
 
 @Serializable
-data class PlayerDetailRoute(
+data class PlayerDetailsRoute(
     val playerId: Int,
 ) : NbaRoute
 
 @Serializable
-data class TeamDetailRoute(
+data class TeamDetailsRoute(
     val teamId: Int,
-)
+) : NbaRoute

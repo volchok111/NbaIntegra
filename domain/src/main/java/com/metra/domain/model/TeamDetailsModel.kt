@@ -1,6 +1,6 @@
 package com.metra.domain.model
 
-data class TeamModel(
+data class TeamDetailsModel(
     val id: Int,
     val conference: String,
     val division: String,
