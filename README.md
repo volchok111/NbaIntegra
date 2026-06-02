@@ -10,9 +10,11 @@ The data is loaded from the [balldontlie API](https://app.balldontlie.io/).
 
 ## What was added
 
-The app now saves loaded players locally using Room.
+The app saves loaded players locally using Room.
 
-Player and team details are opened from locally saved data instead of making extra API requests for every detail screen. This helps reduce the number of API calls and avoids unnecessary rate limit errors.
+Player and team details are opened from locally saved data instead of making extra API requests for every detail screen. This helps reduce the number of API calls and helps avoid unnecessary rate limit errors.
+
+The player list also has a simple cache fallback. If the API is temporarily unavailable or returns a rate limit error, the app tries to show already saved players from local storage.
 
 In simple words:
 
@@ -20,7 +22,8 @@ In simple words:
 2. The loaded players are saved locally
 3. The list is shown on the screen
 4. When the user opens player details, the app takes the player from local storage
-5. When the user opens team details, the app also takes team information from locally saved player data
+5. When the user opens team details, the app takes team information from locally saved player data
+6. If the API request for the player list fails, the app tries to show saved players from Room
 
 ## Tech stack
 
@@ -54,7 +57,11 @@ The app uses Paging 3, so the next page is loaded when the user scrolls close to
 
 Loaded players are also saved locally. This local data is used for player details and team details.
 
-This is a simple local cache approach. It is not a full offline-first implementation, but it helps keep the app faster and reduces extra API requests.
+If the app receives an API error, for example because of the API rate limit, it tries to show already saved players from Room.
+
+This is a simple offline-first style implementation made for demonstration in a test project. It was added mainly because the balldontlie API has rate limits, and using local data helps reduce repeated API calls.
+
+Important note: in offline mode, the app can only show pages that were already loaded and saved before. New pages will not be loaded while the API is unavailable.
 
 ## API key setup
 
@@ -101,4 +108,5 @@ Run auto-format:
 ## Notes
 
 This project was created as a test task.
+
 The main focus is on clean project structure, readable code, Jetpack Compose UI, simple navigation, paginated loading, local data saving, and correct API integration.
