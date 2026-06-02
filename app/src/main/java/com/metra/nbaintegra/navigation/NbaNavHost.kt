@@ -13,6 +13,12 @@ import com.metra.nbaintegra.feature.players.PlayerScreen
 import com.metra.nbaintegra.feature.splash.SplashScreen
 import com.metra.nbaintegra.feature.teamdetails.TeamDetailsScreen
 
+/**
+ * Main navigation host of the app.
+ *
+ * Uses Navigation 3 back stack and connects all app screens:
+ * splash, players list, player details and team details.
+ */
 @Composable
 fun NbaNavHost(modifier: Modifier = Modifier) {
     val activity = LocalActivity.current

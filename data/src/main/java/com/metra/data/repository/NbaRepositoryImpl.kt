@@ -15,6 +15,12 @@ import com.metra.domain.repository.NbaRepository
 import com.metra.domain.utils.Data
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Default implementation of [NbaRepository].
+ *
+ * Loads players from the remote API, saves them locally,
+ * and uses local data for player and team detail screens.
+ */
 class NbaRepositoryImpl(
     private val nbaApi: NbaApi,
     private val playerDao: PlayerDao,

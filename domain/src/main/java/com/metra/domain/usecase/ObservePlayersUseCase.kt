@@ -6,6 +6,11 @@ import com.metra.domain.repository.NbaRepository
 import com.metra.domain.utils.SynchronousUseCase
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * UС for observing paginated NBA players.
+ *
+ * The returned flow is used by the players list screen.
+ */
 class ObservePlayersUseCase(
     private val repository: NbaRepository,
 ) : SynchronousUseCase<Unit, Flow<PagingData<PlayerModel>>> {
